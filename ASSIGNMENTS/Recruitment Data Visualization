@@ -1,0 +1,44 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# --- Step 1: Create Sample Dataset ---
+recruitment_data = {
+    'Company': ['Microsoft', 'Google', 'Amazon', 'IBM', 'Deloitte', 'Capgemini', 'ATOS Origin', 'Amdocs'],
+    'New_Recruitments': [450, 500, 600, 350, 400, 380, 200, 320]
+}
+df_rec = pd.DataFrame(recruitment_data)
+
+# --- a) Bar Chart ---
+plt.figure(figsize=(10, 5))
+plt.bar(df_rec['Company'], df_rec['New_Recruitments'], color='teal')
+plt.title('New Recruitments by Company')
+plt.ylabel('Number of Hires')
+plt.xticks(rotation=45)
+plt.show()
+
+# --- b) & c) Customized Pie Chart ---
+plt.figure(figsize=(8, 8))
+# Customizing: explode the highest hiring company, add shadow and specific colors
+explode = [0.1 if x == max(df_rec['New_Recruitments']) else 0 for x in df_rec['New_Recruitments']]
+plt.pie(df_rec['New_Recruitments'], labels=df_rec['Company'], autopct='%1.1f%%', 
+        explode=explode, shadow=True, startangle=140)
+plt.title('Recruitment Distribution (Customized)')
+plt.show()
+
+# --- d) Doughnut Chart ---
+plt.figure(figsize=(8, 8))
+plt.pie(df_rec['New_Recruitments'], labels=df_rec['Company'], autopct='%1.1f%%', startangle=140)
+# Draw a white circle at the center to create "Donut" look
+centre_circle = plt.Circle((0,0), 0.70, fc='white')
+fig = plt.gcf()
+fig.gca().add_artist(centre_circle)
+plt.title('New Recruitments Doughnut Chart')
+plt.show()
+
+# --- e) Comparison: IBM vs Amdocs ---
+comparison_df = df_rec[df_rec['Company'].isin(['IBM', 'Amdocs'])]
+plt.figure(figsize=(6, 5))
+plt.bar(comparison_df['Company'], comparison_df['New_Recruitments'], color=['blue', 'orange'])
+plt.title('Comparison: IBM vs Amdocs Recruitments')
+plt.ylabel('Number of Hires')
+plt.show()
