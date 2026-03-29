@@ -1,0 +1,67 @@
+# Install required library
+!pip install gradio
+
+import gradio as gr
+import time
+import random
+
+# Sentences for typing test
+sentences = [
+"Python is a powerful programming language used for many applications.",
+"Artificial intelligence is changing the future of technology.",
+"Practice typing every day to improve your speed and accuracy.",
+"Data science helps us understand patterns in large datasets.",
+"Coding becomes easier when you practice consistently."
+]
+
+current_sentence = random.choice(sentences)
+start_time = None
+
+def start_test():
+    global start_time, current_sentence
+    current_sentence = random.choice(sentences)
+    start_time = time.time()
+    return current_sentence, ""
+
+def check_typing(user_input):
+    global start_time, current_sentence
+
+    if start_time is None:
+        return "Click Start Test first!"
+
+    end_time = time.time()
+    time_taken = end_time - start_time
+
+    words = len(user_input.split())
+    wpm = round((words / time_taken) * 60)
+
+    correct_chars = sum(1 for a, b in zip(user_input, current_sentence) if a == b)
+    accuracy = round((correct_chars / len(current_sentence)) * 100)
+
+    result = f"""
+⏱ Time Taken: {round(time_taken,2)} seconds
+⚡ Typing Speed: {wpm} WPM
+🎯 Accuracy: {accuracy}%
+"""
+
+    return result
+
+
+with gr.Blocks(theme=gr.themes.Soft()) as demo:
+    gr.Markdown("# ⌨️ Python Typing Tester")
+    gr.Markdown("Test your typing speed and accuracy!")
+
+    sentence_box = gr.Textbox(label="Sentence to Type", interactive=False)
+
+    start_btn = gr.Button("Start Test")
+
+    user_input = gr.Textbox(label="Type Here")
+
+    submit_btn = gr.Button("Submit")
+
+    result_box = gr.Markdown()
+
+    start_btn.click(start_test, outputs=[sentence_box, user_input])
+    submit_btn.click(check_typing, inputs=user_input, outputs=result_box)
+
+demo.launch()
