@@ -1,0 +1,30 @@
+s=input("Enter a string: ")
+print("a) Total number of characters:",len(s))
+print("b) String repeated 10 times:", s*10)
+if len(s)>=1:
+print("c) First character:", s[0])
+else:
+print("c) First character: String is too short")
+a g e o :
+c S 2 4 2 1 2 2024-28-SEM-II-IV-CSE-D
+Jain Institute of Management & Research 
+if len(s)>=3:
+print("d) First three characters:", s[: 3])
+else:
+print("d) First three characters: String too short")
+if len(s)>=3:
+print("e) Last three characters:", s[-3:])
+else:
+print("e) Last three characters: String too short")
+print("f) String backwards:", s[::-1])
+if len(s)>=7:
+print("g) Seventh character:", s[6])
+else:
+print("g) Seventh character: String not long enough for seventh charac
+ter")
+if len(s)>=2:
+print('h) String with first and last characters removed:", s[1: -1])
+else:
+print("h) String with first and last characters removed: ort to remove characters")
+print("i) String in all caps:", s.upper())
+print("j) String with every 'a' replaced with 'e':" ,s.replace('a', 
