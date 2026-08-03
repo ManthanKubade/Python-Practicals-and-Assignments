@@ -1,0 +1,23 @@
+end=int (input ())
+print("Tokens from", start, "to"
+evenlist=|]
+oddlist=[]
+tup=tuple(range(start, end+1))
+, end)
+Jain Institute of Management & Research 
+for i in range(start, end+1):
+if i%2==0:
+evenlist.append(1)
+else:
+oddlist.append(i)
+eventup=tuple(evenlist)
+oddtup=tuple(oddlist) print("EVEN_TUPLE:", eventup)
+print("ODD_TUPLE: ", oddtup)
+r_eventup=eventup[::-1]
+r_oddtup=odatup[:: -1]
+print("Reversed EVEN_TUPLE:", r_eventup)
+print("Reversed ODD_TUPLE:", r_oddtup)
+r_evenlist=list(r_eventup)
+r_oddlist=list(r_oddtup)
+print("List from Reversed EVEN_TUPLE: ",r_evenlist)
+print("List from Reversed ODD_TUPLE:",r_oddlist)
