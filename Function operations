@@ -1,0 +1,36 @@
+import math
+def add_numbers (a, b) :
+return atb
+# complete the remaining part of the code here...
+def area_of_circle(radius):
+return math.pi*radius*radius
+# complete the remaining part of the code here...
+def reverse_string(s):
+return s[:: -1]
+# complete the remaining part of the code here...
+def square_and_root (n) :
+square=n**2
+root=round(math.sqrt(n),2)
+return square, root
+# complete the remaining part of the code here...
+def greet(name="User", greeting="Hello"):
+return f"{greeting}, {name}!"
+# complete the remaining part of the code here...
+a, b = map(int, input). split())
+radius = float (input())
+s = input ()
+num = int(input())
+ID: CS24212] Page No: 2
+of Technology, Management & Research 2024-28-SEM-IIIV-CSE-DJain Institute
+name_input = input ()
+greet_input = input ()
+# --- Output Display -. -
+print(f"Sum of {a} and {b} is:", add_numbers(a, b))
+print(f"Area of circle with radius (radius} is:", round(area_of _circle(radiu
+s), 2))
+print(f"Reverse of '{s}' is:", reverse_string(s))
+sq, rt = square_and_root (num)
+print(f"Square of {num} is {sq}, Square root is fround(rt, 2)}")
+print (greet()) # Default
+print(greet(name_input)) # With name
+print(greet(name=name_input, greeting=greet_input))
